@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Transition from '../utils/Transition.js';
+import Transition from '../components/Transition.js';
 
 function Dropdown({
   children,
