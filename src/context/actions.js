@@ -1,4 +1,4 @@
-const ROOT_URL = 'http://localhost:4000/api';
+import { getApiUrl } from "../utils/config";
 
 export async function registerUser(dispatch, registerPayload) {
 	const requestOptions = {
@@ -9,7 +9,7 @@ export async function registerUser(dispatch, registerPayload) {
 
 	try {
 		dispatch({ type: 'REQUEST_LOGIN' });
-		let response = await fetch(`${ROOT_URL}/usuarios`, requestOptions);
+		let response = await fetch(`${getApiUrl()}/usuarios`, requestOptions);
 		let data = await response.json();
 
 		if (data.user) {
@@ -36,7 +36,7 @@ export async function loginUser(dispatch, loginPayload) {
 
 	try {
 		dispatch({ type: 'REQUEST_LOGIN' });
-		let response = await fetch(`${ROOT_URL}/auth`, requestOptions);
+		let response = await fetch(`${getApiUrl()}/auth`, requestOptions);
 		let data = await response.json();
 
 		if (data.user) {

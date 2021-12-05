@@ -1,10 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../partials/Header';
 import Footer from '../partials/Footer';
 
 function Home() {
+  const history = useHistory();
+
+  let token = localStorage.getItem('currentUser')
+    ? JSON.parse(localStorage.getItem('currentUser')).token
+    : '';  
+
+  if(token) {
+    history.push('/cameras');
+  }
+
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
 

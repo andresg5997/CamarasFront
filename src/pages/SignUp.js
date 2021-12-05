@@ -11,24 +11,29 @@ function SignUp() {
 
   const history = useHistory();
   
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [phone, setPhone] = useState();
-
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  
 	const handleSignUp = async (e) => {
 		e.preventDefault();
 
-    const password = document.getElementById("password")
-    const confirmPassword = document.getElementById("confirm-password");
+    const passwordElement = document.getElementById("password")
+    const confirmPasswordElement = document.getElementById("confirm-password");
 
-    if(password.value !== confirmPassword.value) {
-      confirmPassword.setCustomValidity("Passwords Don't Match");
+    if(passwordElement.value !== confirmPasswordElement.value) {
+      confirmPasswordElement.setCustomValidity("Passwords Don't Match");
       return;
     }
 
 		try {
-			let response = await registerUser(dispatch, { email, password });
+
+      const role = 3;
+      const secretQuestion = 1;
+      const secretAnswer = 'No';
+
+			let response = await registerUser(dispatch, { name, phone, email, password, role, secretQuestion, secretAnswer });
 			if (!response.user) return;
 			history.push('/cameras');
 		} catch (error) {

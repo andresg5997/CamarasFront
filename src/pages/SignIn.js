@@ -11,8 +11,8 @@ function SignIn() {
 
   const history = useHistory();
   
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
 	const handleSignIn = async (e) => {
 		e.preventDefault();
@@ -46,7 +46,7 @@ function SignIn() {
 
               {/* Form */}
               <div className="max-w-sm mx-auto">
-                <form>
+                <form onSubmit={handleSignIn}>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email</label>
@@ -81,7 +81,6 @@ function SignIn() {
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
                       <button
-                        onClick={handleSignIn}
                         disabled={loading}
                         className="btn text-white bg-blue-600 hover:bg-blue-700 w-full"
                       >
